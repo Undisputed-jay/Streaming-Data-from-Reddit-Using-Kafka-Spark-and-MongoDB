@@ -1,0 +1,21 @@
+# Use a Python base image
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the consumer.py file into the container
+COPY consumer.py /app/consumer.py
+
+# Copy your requirements.txt if available
+COPY requirements.txt /app/requirements.txt
+
+# Install Python dependencies (if you have a requirements file)
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+# Set environment variables (optional)
+ENV KAFKA_BROKER='kafka:9092'
+
+# Run the consumer.py file when the container starts
+CMD ["python", "consumer.py"]

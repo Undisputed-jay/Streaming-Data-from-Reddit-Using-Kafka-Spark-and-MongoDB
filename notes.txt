@@ -1,0 +1,15 @@
+docker exec -it <container name> /bin/bash
+
+docker ps
+
+docker exec -it python-producer /bin/bash
+bash: python producer.py
+
+docker exec -it python-consumer /bin/bash
+bash: python producer.py
+
+docker exec -it spark-master /bin/bash
+bash: python ./jobs/test_spark.py
+
+docker compose up --build
+docker compose down
